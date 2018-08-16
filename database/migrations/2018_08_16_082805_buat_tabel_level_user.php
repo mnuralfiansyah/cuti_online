@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class BuatTabelHasilAkhir extends Migration
+class BuatTabelLevelUser extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class BuatTabelHasilAkhir extends Migration
      */
     public function up()
     {
-        Schema::create('hasil_akhirs', function (Blueprint $table) {
+        Schema::create('level_users', function (Blueprint $table) {
             $table->increments('id');
-            $table->double('nilai', 8, 4);
-            $table->unsignedInteger('ranking');
-            $table->unsignedInteger('alternatif_id');
-            $table->foreign('alternatif_id')->references('id')->on('alternatifs')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('nama');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class BuatTabelHasilAkhir extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hasil_akhirs');
+        Schema::dropIfExists('level_users');
     }
 }

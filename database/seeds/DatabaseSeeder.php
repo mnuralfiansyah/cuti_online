@@ -10,21 +10,45 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
-      // for ($i=1; $i<5 ; $i++) {
-      //   DB::table('kriterias')->insert([
-      //       'nama' => 'C'.$i,
-      //       'bobot' => rand(1,5),
-      //       // 'benefit' => rand(0,1),
-      //   ]);
-      //
-      //   DB::table('alternatifs')->insert([
-      //       'nama' => str_random(10),
-      //   ]);
-
-        // DB::table('bobot_alternatifs')->insert([
-        //     'kriteria_id' => $i,
-        // ]);
+      $level_users = ['Admin','HRD','karyawan',];
+      foreach ($level_users as $k => $v) {
+        DB::table('level_users')->insert([
+            'nama' => $v,
+        ]);
       }
+
+      $jeniscuti = ['CUTI MELAHIRKAN','CUTI HARIAN','CUTI BULANAN','CUTI TAHUNAN',];
+      foreach ($jeniscuti as $k => $v) {
+        DB::table('jenis_cutis')->insert([
+            'nama' => $v,
+        ]);
+      }
+
+      $jabatan = ['DIREKTUR','KEPALA BAGIAN','MANAJER','ADMIN',];
+      foreach ($jabatan as $k => $v) {
+        DB::table('jabatans')->insert([
+            'nama' => $v,
+        ]);
+      }
+
+      $statuskaryawan = ['PEGAWAI TETAP','PEGAWAI KONTRAK','PEGAWAI HARIAN LEPAS',];
+      foreach ($statuskaryawan as $k => $v) {
+        DB::table('status_karyawans')->insert([
+            'nama' => $v,
+        ]);
+      }
+
+      $user = ['admin','hrd','karyawan',];
+      foreach ($user as $k => $v) {
+        DB::table('users')->insert([
+            'nama' => $v,
+            'email' => $v."@".$v.".com",
+            'password' => bcrypt('123456'),
+            'user_level_id' => ($k+1),
+            'status_karyawan_id' => ($k+1),
+            'jabatan_id' => ($k+1),
+        ]);
+      }
+
     }
 }

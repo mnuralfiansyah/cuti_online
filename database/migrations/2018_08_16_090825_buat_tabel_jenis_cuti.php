@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class BuatTabelAlternatif extends Migration
+class BuatTabelJenisCuti extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class BuatTabelAlternatif extends Migration
      */
     public function up()
     {
-        Schema::create('alternatifs', function (Blueprint $table) {
+        Schema::create('jenis_cutis', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama');
             $table->timestamps();
@@ -27,6 +27,6 @@ class BuatTabelAlternatif extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alternatifs');
+        Schema::dropIfExists('jenis_cutis');
     }
 }
