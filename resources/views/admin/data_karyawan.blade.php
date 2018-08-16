@@ -77,7 +77,7 @@
                               <td nowrap>{{$v->telpon}}</td>
                               <td nowrap>{{$v->status_karyawan->nama}}</td>
                               <td nowrap>{{$v->jns_klmin}}</td>
-                              <td nowrap>{{bulan_indo($v->tanggal_lahir)}}</td>
+                              <td nowrap>{{ bulan_indo($v->tanggal_lahir) }}</td>
                               <td nowrap>{{$v->jabatan->nama}}</td>
                               <td nowrap>{{$v->user_level->nama}}</td>
                               <td nowrap align="center">
