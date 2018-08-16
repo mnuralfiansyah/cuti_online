@@ -36,7 +36,11 @@ class AdminController extends Controller
 
     public function data_karyawan()
     {
-        return view('admin.data_karyawan',['data_user'=>User::all(),'auth'=>Auth::User()]);
+        return view('admin.data_karyawan',['data_user'=>User::all(),
+                                           'auth'=>Auth::User(),
+                                           'data_status_karyawan'=>StatusKaryawan::all(),
+                                            'data_jabatan'=>Jabatan::all(),
+                                            'data_user_level'=>LevelUser::all()]);
     }
 
     public function data_pengajuan()
@@ -44,58 +48,50 @@ class AdminController extends Controller
         return view('admin.data_pengajuan',['data_pengajuan'=>Pengajuan::all(),'auth'=>Auth::User()]);
     }
 
-    public function data_status_karyawan()
-    {
-        return view('admin.data_status_karyawan',['data_status_karyawan'=>StatusKaryawan::all(),'auth'=>Auth::User()]);
-    }
-
-    public function data_jabatan()
-    {
-        return view('admin.data_jabatan',['data_jabatan'=>Jabatan::all(),'auth'=>Auth::User()]);
-    }
 
 
     //untuk memasukkan data
-    public function tambah_data_karyawan(Request $request)
+    public function tambah_data_karyawan(Request $r)
     {
-        return view('admin.karyawan',['data_user'=>User::all(),'auth'=>Auth::User()]);
+      $data = [
+        'nama' => $r->nama,
+        'email' => $r->email,
+        'alamat' => $r->alamat,
+        'telpon' => $r->telpon,
+        'jns_klmin' => $r->jns_klmin,
+        'tanggal_lahir' => $r->tanggal_lahir,
+        'status_karyawan_id' => $r->status_karyawan_id,
+        'jabatan_id' => $r->jabatan_id,
+        'user_level_id' => $r->user_level_id,
+        'password' => bcrypt('123456'),
+      ];
+
+      User::insert($data);
+      return redirect('admin')->with('Berhasil', 'Data Karyawan Berhasil Ditambahkan.');;
     }
 
-    public function tambah_data_pengajuan(Request $request)
-    {
-        return view('admin.karyawan',['data_user'=>User::all(),'auth'=>Auth::User()]);
-    }
-
-    public function tambah_data_status_karyawan(Request $request)
-    {
-        return view('admin.karyawan',['data_user'=>User::all(),'auth'=>Auth::User()]);
-    }
-
-    public function tambah_data_jabatan(Request $request)
-    {
-        return view('admin.karyawan',['data_user'=>User::all(),'auth'=>Auth::User()]);
-    }
 
     //untuk mengupdate data
-    public function update_data_karyawan(Request $request, $id)
+    public function update_data_karyawan(Request $r, $id)
     {
-        return view('admin.karyawan',['data_user'=>User::all(),'auth'=>Auth::User()]);
+
+        $data = [
+          'nama' => $r->nama,
+          'email' => $r->email,
+          'alamat' => $r->alamat,
+          'telpon' => $r->telpon,
+          'jns_klmin' => $r->jns_klmin,
+          'tanggal_lahir' => $r->tanggal_lahir,
+          'status_karyawan_id' => $r->status_karyawan_id,
+          'jabatan_id' => $r->jabatan_id,
+          'user_level_id' => $r->user_level_id,
+        ];
+
+        User::where('id',$r->id)->update($data);
+        return redirect('admin')->with('Berhasil', 'Data Karyawan Berhasil Diubah.');
     }
 
-    public function update_data_pengajuan(Request $request, $id)
-    {
-        return view('admin.karyawan',['data_user'=>User::all(),'auth'=>Auth::User()]);
-    }
 
-    public function update_data_status_karyawan(Request $request, $id)
-    {
-        return view('admin.karyawan',['data_user'=>User::all(),'auth'=>Auth::User()]);
-    }
-
-    public function update_data_jabatan(Request $request, $id)
-    {
-        return view('admin.karyawan',['data_user'=>User::all(),'auth'=>Auth::User()]);
-    }
 
     //untuk menhapus data
     public function delete_data_karyawan($id)
@@ -103,20 +99,6 @@ class AdminController extends Controller
         return view('admin.karyawan',['data_user'=>User::all(),'auth'=>Auth::User()]);
     }
 
-    public function delete_data_pengajuan($id)
-    {
-        return view('admin.karyawan',['data_user'=>User::all(),'auth'=>Auth::User()]);
-    }
-
-    public function delete_data_status_karyawan($id)
-    {
-        return view('admin.karyawan',['data_user'=>User::all(),'auth'=>Auth::User()]);
-    }
-
-    public function delete_data_jabatan($id)
-    {
-        return view('admin.karyawan',['data_user'=>User::all(),'auth'=>Auth::User()]);
-    }
 
 
 

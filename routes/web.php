@@ -15,11 +15,9 @@
 Route::get('/', function () {return redirect('/login')->with('Berhasil', 'Selamat Datang.');});
 
 //untuk menampilkan
-Route::get('admin','AdminController@index');
+Route::get('admin','AdminController@data_karyawan');
 Route::get('admin/data_karyawan','AdminController@data_karyawan');
 Route::get('admin/data_pengajuan','AdminController@data_pengajuan');
-Route::get('admin/data_status_karyawan','AdminController@data_status_karyawan');
-Route::get('admin/data_jabatan','AdminController@data_jabatan');
 
 //untuk menambah data
 Route::post('admin/data_karyawan','AdminController@tambah_data_karyawan');

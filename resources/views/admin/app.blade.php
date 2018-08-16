@@ -69,13 +69,8 @@
                     <ul class="nav child_menu">
                       <li><a href="/admin/data_karyawan">Data Karyawan</a></li>
                       <li><a href="/admin/data_pengajuan">Data Pengajuan Cuti</a></li>
-                      <li><a href="/admin/data_jabatan">Data Jabatan</a></li>
-                      <li><a href="/admin/data_status_karyawan">Data Status Karyawan</a></li>
                     </ul>
                   </li>
-
-                  <li><a href="#"><i class="fa fa-calculator"></i>Perhitungan </a></li>
-
                 </ul>
               </div>
 
