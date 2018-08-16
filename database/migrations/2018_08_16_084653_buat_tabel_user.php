@@ -23,7 +23,7 @@ class BuatTabelUser extends Migration
             $table->string('telpon')->nullable();
             $table->smallInteger('status')->nullable();
             $table->enum('jns_klmin',['PRIA','WANITA'])->nullable();
-            $table->date('tanggal_lahir')->nullable();
+            $table->date('tanggal_lahir')->default('01-01-2001');
 
             $table->unsignedInteger('status_karyawan_id')->nullable();
             $table->unsignedInteger('jabatan_id')->nullable();
