@@ -1,4 +1,4 @@
-@extends('template.app')
+@extends('admin.app')
 
 @section('content')
         <!-- page content -->
@@ -35,33 +35,47 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Data Alternatif</h2>
+                    <h2>Data Karyawan</h2>
 
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                      <button type="button"  class="btn btn-md btn-warning" data-toggle="modal" data-target=".modal-tambah-alternatif">Tambah Alternatif</button>
+                      <button type="button"  class="btn btn-md btn-warning" data-toggle="modal" data-target=".modal-tambah-alternatif">Tambah Karyawan</button>
 <br/><br/>
                     <table id="" class="datatable-fixed-header table table-striped table-bordered">
                       <thead>
                         <tr>
-                          <th align="center">No</th>
-                          <th align="center">Nama</th>
-                          <th align="center">Aksi</th>
+                          <th nowrap align="center">No</th>
+                          <th nowrap>Tanggal Pemohon</th>
+                          <th nowrap>Nama</th>
+                          <th nowrap>Jabatan</th>
+                          <th nowrap>Awal Tanggal Cuti</th>
+                          <th nowrap>Akhir Tanggal Cuti</th>
+                          <th nowrap>Lama Cuti</th>
+                          <th nowrap>Jenis Cuti</th>
+                          <th nowrap>Keterangan</th>
+                          <th nowrap>Status</th>
+                          <th nowrap>Penyetuju</th>
                         </tr>
                       </thead>
-
-
                       <tbody>
                         @php $iter=1;@endphp
-                          @foreach ($data_alternatif as $k => $v)
+                          @foreach ($data_pengajuan as $k => $v)
                             <tr>
                               <td align="right">{{$iter}}</td>
-                              <td>{{$v->nama}}</td>
-                              <td nowrap align="center">
-                                  <button data-id="{{$v->id}}" data-nama="{{$v->nama}}" type="button"  class="btn btn-xs btn-warning btn_edit" data-toggle="modal" data-target=".modal-edit-alternatif">Edit</button>
-                                  <button data-id="{{$v->id}}" data-nama="{{$v->nama}}" class="btn btn-xs btn-danger btn_hapus" type="button" data-toggle="modal" data-target=".modal-hapus-alternatif">Hapus</button>
+                              <td nowrap>{{bulan_indo($v->tgl_dibuat)}}</td>
+                              <td nowrap>{{$v->pemohon->nama}}</td>
+                              <td nowrap>{{$v->pemohon->jabatan->nama}}</td>
+                              <td nowrap>{{bulan_indo($v->dari)}}</td>
+                              <td nowrap>{{bulan_indo($v->sampai)}}</td>
+                              <td nowrap>
+                                @php $awal       = new DateTime($v->dari); $akhir = new DateTime($v->sampai); $lama = $akhir->diff($awal)->format("%a"); @endphp
+                                {{$lama}} Hari
                               </td>
+                              <td nowrap>{{$v->jenis_cuti->nama}}</td>
+                              <td nowrap>{{$v->keterangan}}</td>
+                              <td nowrap>@if($v->status==1) Belum Diputuskan @elseif($v->status==2) Cuti Ditolak @else <button class="btn-success">Cuti Diterima</button> @endif</td>
+                              <td nowrap>{{$v->penyetuju->nama}}</td>
                             </tr>
                             @php $iter++;@endphp
                           @endforeach
@@ -138,7 +152,6 @@
                         <label class="control-label col-md-6 col-sm-6 col-xs-6">Nilai</label>
                       </div>
 
-                      @foreach ($data_kriteria as $k => $v)
                         <div class="form-group">
                           <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">{{$v->nama}} <span class="required">*</span>
                           </label>
@@ -146,7 +159,6 @@
                             <input name="{{$v->id}}"  type="text" required="required" class="form-control col-md-7 col-xs-12">
                           </div>
                         </div>
-                      @endforeach
                 </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

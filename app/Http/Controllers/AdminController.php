@@ -96,7 +96,17 @@ class AdminController extends Controller
     //untuk menhapus data
     public function delete_data_karyawan($id)
     {
-        return view('admin.karyawan',['data_user'=>User::all(),'auth'=>Auth::User()]);
+      if(Auth::user()->id==$id){
+        return redirect('/admin/data_karyawan/')->with('Gagal', 'Tidak Bisa Menghapus Diri Sendiri.');
+      }
+
+      // User::find($id)->Pengajuan()->delete();
+
+      if(User::where(['id'=>$id])->delete()){
+      return redirect('/admin/data_karyawan/')->with('Berhasil', 'Data Karyawan Berhasil Dihapus.');
+      }
+
+      return redirect('/admin/data_karyawan/')->with('Gagal', 'Data Karyawan Gagal Dihapus.');
     }
 
 

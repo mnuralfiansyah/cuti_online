@@ -2,6 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use DateTime;
+use App\Models\User;
+use App\Models\Jabatan;
+use App\Models\JenisCuti;
+use App\Models\LevelUser;
+use App\Models\Pengajuan;
+use App\Models\StatusKaryawan;
 use Illuminate\Http\Request;
 
 class KaryawanController extends Controller
@@ -17,7 +25,10 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        return "Karyawan";
+
+        $data_pengajuan = Pengajuan::where('pemohon_id',Auth::User()->id)->get();
+
+        return view('karyawan.permohonan',['data_pengajuan'=>$data_pengajuan,'auth'=>Auth::User(),'jenis_cuti'=>JenisCuti::all()]);
     }
 
     /**
@@ -36,9 +47,32 @@ class KaryawanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $r)
     {
-        //
+        $awal       = new DateTime($r->dari);
+        $akhir      = new DateTime($r->sampai);
+        $now        = new DateTime();
+
+        // cek tanggal
+        if($akhir->format('%d')<$awal->format('%d')){
+          if($akhir->format('%m')<=$awal->format('%m')){
+            if($akhir->format('%y')<=$awal->format('%y')){
+              return redirect('karyawan/')->with('Gagal', 'Minimal Cuti 1 Hari.');
+            }
+          }
+        }
+
+        Pengajuan::insert([
+                            'jenis_cuti_id'=>$r->jenis_cuti_id,
+                            'dari'=>$r->dari,
+                            'status'=>1,
+                            'sampai'=>$r->sampai,
+                            'pemohon_id'=>Auth::User()->id,
+                            'tgl_dibuat'=>$now->format('Y-m-d'),
+                            'keterangan'=>$r->keterangan,]
+                          );
+
+        return redirect('karyawan/')->with('Berhasil', 'Anda Berhasil Mengajukan Cuti.');
     }
 
     /**

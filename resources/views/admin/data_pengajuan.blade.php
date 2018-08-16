@@ -51,11 +51,11 @@
                           <th nowrap>Jabatan</th>
                           <th nowrap>Awal Tanggal Cuti</th>
                           <th nowrap>Akhir Tanggal Cuti</th>
+                          <th nowrap>Lama Cuti</th>
                           <th nowrap>Jenis Cuti</th>
                           <th nowrap>Keterangan</th>
                           <th nowrap>Status</th>
-                          <th nowrap>Penyetuju</th>
-                          <th nowrap>Aksi</th>
+                          {{-- <th nowrap>Penyetuju</th> --}}
                         </tr>
                       </thead>
                       <tbody>
@@ -63,19 +63,19 @@
                           @foreach ($data_pengajuan as $k => $v)
                             <tr>
                               <td align="right">{{$iter}}</td>
-                              <td nowrap>{{$v->tgl_dibuat}}</td>
+                              <td nowrap>{{bulan_indo($v->tgl_dibuat)}}</td>
                               <td nowrap>{{$v->pemohon->nama}}</td>
                               <td nowrap>{{$v->pemohon->jabatan->nama}}</td>
-                              <td nowrap>{{$v->dari}}</td>
-                              <td nowrap>{{$v->sampai}}</td>
+                              <td nowrap>{{bulan_indo($v->dari)}}</td>
+                              <td nowrap>{{bulan_indo($v->sampai)}}</td>
+                              <td nowrap>
+                                @php $awal       = new DateTime($v->dari); $akhir = new DateTime($v->sampai); $lama = $akhir->diff($awal)->format("%a"); @endphp
+                                {{($lama+1)}} Hari
+                              </td>
                               <td nowrap>{{$v->jenis_cuti->nama}}</td>
                               <td nowrap>{{$v->keterangan}}</td>
-                              <td nowrap>@if($v->status==1) Belum Diputuskan @elseif($v->status==2) Cuti Ditolak @else Cuti Diterima @endif</td>
-                              <td nowrap>{{$v->penyetuju->nama}}</td>
-                              <td nowrap align="center">
-                                  <button data-id="{{$v->id}}" data-nama="{{$v->nama}}" type="button"  class="btn btn-xs btn-warning btn_edit" data-toggle="modal" data-target=".modal-edit-alternatif">Edit</button>
-                                  <button data-id="{{$v->id}}" data-nama="{{$v->nama}}" class="btn btn-xs btn-danger btn_hapus" type="button" data-toggle="modal" data-target=".modal-hapus-alternatif">Hapus</button>
-                              </td>
+                              <td nowrap>@if($v->status==1) Belum Diputuskan @elseif($v->status==2) Cuti Ditolak @else <button class="btn-success">Cuti Diterima</button> @endif</td>
+                              {{-- <td nowrap>{{$v->penyetuju->nama}}</td> --}}
                             </tr>
                             @php $iter++;@endphp
                           @endforeach

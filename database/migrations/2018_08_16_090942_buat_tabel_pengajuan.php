@@ -19,14 +19,14 @@ class BuatTabelPengajuan extends Migration
             $table->date('sampai');
             $table->date('tgl_dibuat');
             $table->string('keterangan');
-            $table->smallInteger('status');
+            $table->smallInteger('status')->default('1');
 
-            $table->unsignedInteger('pemohon');
-            $table->unsignedInteger('penyetuju');
+            $table->unsignedInteger('pemohon_id');
+            $table->unsignedInteger('penyetuju_id')->nullable();
             $table->unsignedInteger('jenis_cuti_id');
 
-            $table->foreign('pemohon')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('penyetuju')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('pemohon_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('penyetuju_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('jenis_cuti_id')->references('id')->on('jenis_cutis')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();

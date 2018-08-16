@@ -468,7 +468,7 @@ hitung();
       $(document).on('click','button.btn_hapus', function()
       {
       var nama = $(this).attr('data-nama');
-      var action = 'data_alternatif/'+$(this).attr('data-id');
+      var action = '/admin/data_karyawan/'+$(this).attr('data-id');
       isi_modal = "Apakah Anda Yakin Menghapus "+nama;
       $("#modal_hapus_pesan").html(isi_modal);
       $("#hapus_form").attr("action",action);
