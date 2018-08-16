@@ -28,7 +28,7 @@
             "App\\": "app/"
         },
         "files": [
-        "App\\Http\\Controllers\\Helper\\Bulan.php"
+        "app/Http/Controllers/Helper/Bulan.php"
     ]
     },
     "autoload-dev": {
