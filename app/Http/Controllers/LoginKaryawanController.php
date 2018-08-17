@@ -17,6 +17,10 @@ class LoginKaryawanController extends Controller
 
     public function LoginKaryawan(Request $r)
     {
+      if(!User::where('email',$r->email)->count()){
+        return redirect('/login');
+      }
+
       $user = User::where('email',$r->email)->first();
       if($user->user_level_id==1){
         $user_level="admin";
@@ -32,6 +36,8 @@ class LoginKaryawanController extends Controller
 			{
 				return redirect($user_level);
 			}
+
+      return redirect('/login');
 
     }
 }

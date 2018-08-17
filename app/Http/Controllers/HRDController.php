@@ -2,6 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use DateTime;
+use App\Models\User;
+use App\Models\Jabatan;
+use App\Models\JenisCuti;
+use App\Models\LevelUser;
+use App\Models\Pengajuan;
+use App\Models\StatusKaryawan;
 use Illuminate\Http\Request;
 
 class HRDController extends Controller
@@ -17,7 +25,9 @@ class HRDController extends Controller
      */
     public function index()
     {
-        return "HRD";
+      $data_pengajuan = Pengajuan::all();
+
+      return view('hrd.index',['data_pengajuan'=>$data_pengajuan,'auth'=>Auth::User(),'jenis_cuti'=>JenisCuti::all()]);
     }
 
     /**
@@ -27,7 +37,7 @@ class HRDController extends Controller
      */
     public function create()
     {
-        //
+        return redirect('/hrd');
     }
 
     /**
@@ -38,7 +48,7 @@ class HRDController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect('/hrd');
     }
 
     /**
@@ -49,7 +59,7 @@ class HRDController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect('/hrd');
     }
 
     /**
@@ -60,7 +70,7 @@ class HRDController extends Controller
      */
     public function edit($id)
     {
-        //
+        return redirect('/hrd');
     }
 
     /**
@@ -70,9 +80,10 @@ class HRDController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $r, $id)
     {
-        //
+        Pengajuan::where('id',$id)->update(['status'=>$r->keputusan]);
+        return redirect('/hrd');
     }
 
     /**
@@ -83,6 +94,6 @@ class HRDController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return redirect('/hrd');
     }
 }
