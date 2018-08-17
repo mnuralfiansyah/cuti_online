@@ -35,12 +35,11 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Data Karyawan</h2>
+                    <h2>Data Cuti</h2>
 
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                      <button type="button"  class="btn btn-md btn-warning" data-toggle="modal" data-target=".modal-tambah-alternatif">Tambah Karyawan</button>
 <br/><br/>
                     <table id="" class="datatable-fixed-header table table-striped table-bordered">
                       <thead>
@@ -98,103 +97,7 @@
         <!-- Large modal -->
 
 
-        <div class="modal fade modal-edit-alternatif" tabindex="-1" role="dialog" aria-hidden="true">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Edit Alternatif</h4>
-              </div>
-              <div class="modal-body">
-                <form id="edit_form" action="" method="post" data-parsley-validate class="form-horizontal form-label-left">
-                  {{ method_field('PUT') }}
-                  {{ csrf_field() }}
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nama Alternatif <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input  id="edit_nama" type="text" name="nama" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
-              </form>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div class="modal fade modal-tambah-alternatif" tabindex="-1" role="dialog" aria-hidden="true">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Tambah Alternatif</h4>
-              </div>
-              <div class="modal-body">
-                <form action="" method="post" data-parsley-validate class="form-horizontal form-label-left">
-                  {{ csrf_field() }}
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nama Alternatif <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input name="nama"  type="text" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-6 col-sm-6 col-xs-6">Nilai</label>
-                      </div>
-
-                        <div class="form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">{{$v->nama}} <span class="required">*</span>
-                          </label>
-                          <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input name="{{$v->id}}"  type="text" required="required" class="form-control col-md-7 col-xs-12">
-                          </div>
-                        </div>
-                </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
-              </form>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div class="modal fade modal-hapus-alternatif" tabindex="-1" role="dialog" aria-hidden="true">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Hapus Alternatif</h4>
-              </div>
-              <div class="modal-body">
-                <form id="hapus_form" method="post" action="" data-parsley-validate class="form-horizontal form-label-left">
-                  {{ method_field('DELETE') }}
-                  {{ csrf_field() }}
-                  <div id='modal_hapus_pesan'></div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
-              </form>
-              </div>
-              {{-- <div class="ln_solid"></div> --}}
-
-            </div>
-          </div>
-        </div>
+        
 
         <!-- footer content -->
         <footer>

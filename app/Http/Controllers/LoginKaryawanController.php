@@ -12,7 +12,7 @@ class LoginKaryawanController extends Controller
 {
     public function showLoginForm()
     {
-        return view('auth.login');
+        return view('login.index');
     }
 
     public function LoginKaryawan(Request $r)
