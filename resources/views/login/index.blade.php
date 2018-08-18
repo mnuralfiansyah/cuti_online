@@ -8,22 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Login | Aplikasi Cuti Online</title>
-
-
-
-
-
-
-
-
-
-
     {{-- sebelum diganti --}}
     <link href="/template/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
-
-
-
     <!-- Font Awesome -->
     <link href="/template/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
@@ -64,6 +50,56 @@
 
                 <div class="clearfix"></div>
                 <br />
+
+                <div class="row text-left">
+                  <div class="col-md-3 col-sm-3 col-xs-3">
+                    User Level
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-6">
+                    Email
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-3">
+                    Password
+                  </div>
+                </div>
+
+                <div class="row text-left">
+                  <div class="col-md-3 col-sm-3 col-xs-3">
+                    Admin
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-6">
+                    admin@admin.com
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-3">
+                    123456
+                  </div>
+                </div>
+
+                <div class="row text-left">
+                  <div class="col-md-3 col-sm-3 col-xs-3">
+                    HRD
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-6">
+                    hrd@hrd.com
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-3">
+                    123456
+                  </div>
+                </div>
+
+                <div class="row text-left">
+                  <div class="col-md-3 col-sm-3 col-xs-3">
+                    Karyawan
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-6">
+                    karyawan@karyawan.com
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-3">
+                    123456
+                  </div>
+                </div>
+
+                <br><br>
 
                 <div>
                   <h1><i class="fa fa-paw"></i> Aplikasi Cuti Online</h1>

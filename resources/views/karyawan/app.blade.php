@@ -63,7 +63,7 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
                   <li><a href="/karyawan"><i class="fa fa-home"></i> Home </a></li>
-                  <li><a href="/logout"><i class="fa fa-home"></i> Logout </a></li>
+                  <li><a href="/logout"><i class="fa fa-sign-out"></i>Logout </a></li>
                 </ul>
               </div>
 

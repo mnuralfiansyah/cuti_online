@@ -19,28 +19,36 @@
                     <div class="">
                       <div class="x_content">
                         <div class="row">
-                          <div class="animated flipInY col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                          <div class="animated flipInY col-lg-3 col-md-3 col-sm-12 col-xs-12">
                             <div class="tile-stats">
-                              <div class="icon"><i class="fa fa-caret-square-o-right"></i>
+                              <div class="icon"><i class="fa fa-level-down"></i>
                               </div>
-                              <div class="count">179</div>
+                              <div class="count">{{$Npermohonan}}</div>
                               <p>Permohonan Cuti</p>
                             </div>
                           </div>
-                          <div class="animated flipInY col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                          <div class="animated flipInY col-lg-3 col-md-3 col-sm-12 col-xs-12">
                             <div class="tile-stats">
-                              <div class="icon"><i class="fa fa-caret-square-o-right"></i>
+                              <div class="icon"><i class="fa fa-check"></i>
                               </div>
-                              <div class="count">179</div>
+                              <div class="count">{{$Nterima}}</div>
                               <p>Cuti Yanng Disetujui</p>
                             </div>
                           </div>
-                          <div class="animated flipInY col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                          <div class="animated flipInY col-lg-3 col-md-3 col-sm-12 col-xs-12">
                             <div class="tile-stats">
-                              <div class="icon"><i class="fa fa-caret-square-o-right"></i>
+                              <div class="icon"><i class="fa fa-times"></i>
                               </div>
-                              <div class="count">179</div>
+                              <div class="count">{{$Ntolak}}</div>
                               <p>Cuti Yang ditolak</p>
+                            </div>
+                          </div>
+                          <div class="animated flipInY col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                            <div class="tile-stats">
+                              <div class="icon"><i class="fa fa-mail-reply"></i>
+                              </div>
+                              <div class="count">{{$Ntotal}}</div>
+                              <p>Total Permohonan Cuti</p>
                             </div>
                           </div>
                         </div>

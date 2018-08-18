@@ -83,7 +83,7 @@ class KaryawanController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect('karyawan/');
     }
 
     /**
@@ -94,7 +94,7 @@ class KaryawanController extends Controller
      */
     public function edit($id)
     {
-        //
+        return redirect('karyawan/');
     }
 
     /**
@@ -106,7 +106,7 @@ class KaryawanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return redirect('karyawan/');
     }
 
     /**
@@ -117,6 +117,6 @@ class KaryawanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return redirect('karyawan/');
     }
 }

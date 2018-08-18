@@ -71,6 +71,8 @@
                       <li><a href="/admin/data_pengajuan">Data Pengajuan Cuti</a></li>
                     </ul>
                   </li>
+
+                  <li><a href="/logout"><i class="fa fa-sign-out"></i>Logout </a></li>
                 </ul>
               </div>
 

@@ -25,9 +25,19 @@ class HRDController extends Controller
      */
     public function index()
     {
-      $data_pengajuan = Pengajuan::all();
+      $Npermohonan = Pengajuan::where(['status'=>1])->count();
+      $Ntolak = Pengajuan::where(['status'=>2])->count();
+      $Nterima = Pengajuan::where(['status'=>3])->count();
+      $Ntotal = Pengajuan::all()->count();
 
-      return view('hrd.index',['data_pengajuan'=>$data_pengajuan,'auth'=>Auth::User(),'jenis_cuti'=>JenisCuti::all()]);
+      return view('hrd.index',['data_pengajuan'=>Pengajuan::all(),
+                               'auth'=>Auth::User(),
+                               'jenis_cuti'=>JenisCuti::all(),
+                               'Npermohonan'=>$Npermohonan,
+                               'Nterima'=>$Nterima,
+                               'Ntotal'=>$Ntotal,
+                               'Ntolak'=>$Ntolak,
+                            ]);
     }
 
     /**
@@ -82,7 +92,7 @@ class HRDController extends Controller
      */
     public function update(Request $r, $id)
     {
-        Pengajuan::where('id',$id)->update(['status'=>$r->keputusan]);
+        Pengajuan::where('id',$id)->update(['status'=>$r->keputusan,'penyetuju_id'=>Auth::User()->id]);
         return redirect('/hrd');
     }
 

@@ -73,7 +73,7 @@
                               </td>
                               <td nowrap>{{$v->jenis_cuti->nama}}</td>
                               <td nowrap>{{$v->keterangan}}</td>
-                              <td nowrap>@if($v->status==1) Belum Diputuskan @elseif($v->status==2) Cuti Ditolak @else <button class="btn-success">Cuti Diterima</button> @endif</td>
+                              <td nowrap>@if($v->status==1) <button class="btn-info"> Belum Diputuskan @elseif($v->status==2) <button class="btn-danger"> Cuti Ditolak @else <button class="btn-success">Cuti Diterima @endif</button></td>
                               {{-- <td nowrap>{{$v->penyetuju->nama}}</td> --}}
                             </tr>
                             @php $iter++;@endphp
@@ -97,7 +97,7 @@
         <!-- Large modal -->
 
 
-        
+
 
         <!-- footer content -->
         <footer>

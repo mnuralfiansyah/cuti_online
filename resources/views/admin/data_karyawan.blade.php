@@ -14,6 +14,32 @@
             </div>
 
             <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="">
+                      <div class="x_content">
+                        <div class="row">
+                          <div class="animated flipInY col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="tile-stats">
+                              <div class="icon"><i class="fa fa-group"></i>
+                              </div>
+                              <div class="count">{{$Ncuti}}</div>
+                              <h3>Total Karyawan</h3>
+                            </div>
+                          </div>
+                          <div class="animated flipInY col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="tile-stats">
+                              <div class="icon"><i class="fa fa-mail-reply"></i>
+                              </div>
+                              <div class="count">{{$Nkaryawan}}</div>
+                              <h3>Total Permohonan Cuti</h3>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
 
             <div class="row">
               @if(session('Berhasil'))

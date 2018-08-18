@@ -18,17 +18,7 @@ class AdminController extends Controller
         $this->middleware('auth:admin');
     }
 
-// public function __construct(Kriteria $kriteria)
-// {
-//   $this->kriteria = $kriteria;
-// }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
-    // untuk menampilkan data
     public function index()
     {
         return view('admin.index',['data_user'=>User::all(),'auth'=>Auth::User()]);
@@ -36,11 +26,17 @@ class AdminController extends Controller
 
     public function data_karyawan()
     {
+      $Ncuti = Pengajuan::all()->count();
+      $Nkaryawan = User::where(['user_level_id'=>3])->count();
+
         return view('admin.data_karyawan',['data_user'=>User::all(),
                                            'auth'=>Auth::User(),
                                            'data_status_karyawan'=>StatusKaryawan::all(),
                                             'data_jabatan'=>Jabatan::all(),
-                                            'data_user_level'=>LevelUser::all()]);
+                                            'data_user_level'=>LevelUser::all(),
+                                            'Ncuti'=>$Ncuti,
+                                            'Nkaryawan'=>$Nkaryawan,
+                                          ]);
     }
 
     public function data_pengajuan()
@@ -67,7 +63,7 @@ class AdminController extends Controller
       ];
 
       User::insert($data);
-      return redirect('admin')->with('Berhasil', 'Data Karyawan Berhasil Ditambahkan.');;
+      return redirect('admin')->with('Berhasil', 'Data Karyawan Berhasil Ditambahkan Password Karyawan :  123456');;
     }
 
 
@@ -134,7 +130,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return redirect('admin');
     }
 
     /**
@@ -145,7 +141,7 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect('admin');
     }
 
     /**
@@ -156,7 +152,7 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect('admin');
     }
 
     /**
@@ -167,7 +163,7 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        return redirect('admin');
     }
 
     /**
@@ -179,7 +175,7 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return redirect('admin');
     }
 
     /**
@@ -190,6 +186,6 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return redirect('admin');
     }
 }
